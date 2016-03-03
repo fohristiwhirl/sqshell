@@ -39,7 +39,7 @@ def print_cursor(cur):
 	print()
 	for row in rows:
 		for i, col in enumerate(row):
-			print("{0:<{1}}".format(col, lengths[i]), end="  ")
+			print("{0:<{1}}".format(str(col), lengths[i]), end="  ")
 		print()
 	print()
 

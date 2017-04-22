@@ -2,6 +2,9 @@
 # Based on example at https://docs.python.org/3.4/library/sqlite3.html
 # But better at dealing with multi-line statements and printing stuff
 
+# Note to self: to see all tables, do:
+# SELECT name FROM sqlite_master WHERE TYPE = 'table';
+
 import sqlite3
 import sys
 
@@ -39,7 +42,10 @@ def print_cursor(cur):
 	print()
 	for row in rows:
 		for i, col in enumerate(row):
-			print("{0:<{1}}".format(str(col), lengths[i]), end="  ")
+			try:
+				print("{0:<{1}}".format(str(col), lengths[i]), end="  ")
+			except:
+				print("{0:<{1}}".format("?" * len(str(col)), lengths[i]), end="  ")
 		print()
 	print()
 
